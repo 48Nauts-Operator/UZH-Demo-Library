@@ -16,10 +16,10 @@
     "test:browser": "node scripts/check-browser.mjs"
   },
   "dependencies": {
-    "chrono-node": "^2.8.0",
-    "qrcode": "^1.5.4"
+    "chrono-node": "2.10.3",
+    "qrcode": "1.5.4"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.2"
+    "@playwright/test": "1.65.0"
   }
 }
