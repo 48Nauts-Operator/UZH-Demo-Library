@@ -1,0 +1,3 @@
+company,url,status,reason,jobs,terms,checked_at
+DEMO · Scraping prohibited,https://example.ch/,Blacklist,Restriction detected; excluded by conservative screening policy,https://example.ch/jobs,https://example.ch/terms,2026-11-06T18:53:10.837350+00:00
+DEMO · AI robot excluded,https://example.ch/,Blacklist,Restriction detected; excluded by conservative screening policy,https://example.ch/jobs,https://example.ch/terms,2026-11-06T18:53:10.837621+00:00

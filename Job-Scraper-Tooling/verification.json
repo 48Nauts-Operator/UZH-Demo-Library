@@ -1,0 +1,12 @@
+{
+  "tests": 19,
+  "live_sample": {
+    "Swisscom": "Review",
+    "Digitec Galaxus": "Good"
+  },
+  "browser_filters": "passed",
+  "report_download_links": "HTTP 200",
+  "console": "No output captured",
+  "python": "3.14.5",
+  "scanner_sha256": "b2532bdd90921b6a9ce7abe6c0a4a5a2620587d5f7d7e2e3e808e0cd946d8ffe"
+}

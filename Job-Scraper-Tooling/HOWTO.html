@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Swiss careers policy scanner · How to</title><style>body{font:17px/1.65 system-ui;max-width:880px;margin:50px auto;padding:0 24px;color:#18313a;background:#f6f9f8}h1{line-height:1.15;font-size:40px}h2{margin-top:40px}code,pre{background:#e3ece9;border-radius:6px}code{padding:2px 5px}pre{padding:18px;overflow:auto}a{color:#006957}li{margin:10px 0}.note{border-left:4px solid #008c73;padding:12px 20px;background:white}nav{display:flex;gap:20px;flex-wrap:wrap}</style>
+<h1>Swiss careers policy scanner</h1><p>A small local PoC for screening company websites before collecting job data. No API key, model account or Python packages required.</p>
+<nav><a href="demo-output/report.html">Open offline demo</a><a href="live-output/report.html">Open real scan</a><a href="sites.csv">Example input</a></nav>
+<h2>1. Try the included report</h2>
+<p>Unzip the package and open <code>HOWTO.html</code>. The offline demo contains five clearly labelled synthetic cases: Good, a scraping restriction, an AI-bot exclusion, missing terms, and no careers page. Use the report buttons to filter results and the links at the bottom to open the CSV lists or full evidence.</p>
+<p>The separate real scan uses Swisscom and Digitec Galaxus. Its timestamps and evidence describe the run included in the package. Website content and policies can change.</p>
+<h2>2. Run the scanner</h2>
+<p>You need Python 3.11 or newer. This package was tested with Python 3.14.5 on macOS. In Terminal, enter the extracted folder:</p>
+<pre>cd UZH-Demo-Library/Job-Scraper-Tooling
+python3 --version
+python3 demo.py
+open demo-output/report.html</pre>
+<p>If Python is missing, install a supported Python 3 version from <a href="https://www.python.org/downloads/">python.org</a>. There is no pip install step.</p>
+<h2>3. Supply company websites</h2>
+<p>Edit <code>sites.csv</code> with a text editor. Use one company per row, up to 20 per run. Start with the corporate homepage rather than a consumer shop landing page. The scope is the Swiss companies you supply; the scanner does not search all Swiss websites or verify company domicile.</p>
+<pre>company,url,jobs_url,terms_url
+My company,https://www.example.ch/,,</pre>
+<p>The last two columns are optional hints. If the site hides links behind JavaScript, paste the exact careers and terms URLs there. Keep the column headers. Quotes are required around a field containing a comma. The example domain is only illustrative.</p>
+<pre>python3 scanner.py --input sites.csv --out output
+open output/report.html</pre>
+<p>Save each run separately when comparing changes, for example <code>--out scans/2026-11-06</code>. Reusing an output folder replaces that report and its CSV/JSON files. The scanner prints results as it progresses and writes the report after every company.</p>
+<h2>4. Understand the decisions</h2>
+<ul>
+<li><strong>Good:</strong> a company-hosted careers page and at least one terms/legal document were confirmed; no matching restriction, ambiguity or fetch issue was detected.</li>
+<li><strong>Blacklist:</strong> a restriction matched in checked terms, robots blocked the homepage/careers path, or a checked AI bot was excluded from the careers path. The reason distinguishes these cases.</li>
+<li><strong>Review:</strong> missing terms, inaccessible or unsupported documents, external careers platforms, ambiguous policy wording, crawl limits, or network failures.</li>
+<li><strong>No jobs found:</strong> no careers link was discovered on the input page. This does not prove that the company has no jobs.</li>
+</ul>
+<p class="note">Good means “no restriction detected by this heuristic”, not permission or legal clearance. Before a real collection job, review the evidence and the site's applicable terms. A blacklist entry is this tool's conservative decision, not a legal conclusion about the company.</p>
+<h2>5. What it checks</h2>
+<ol>
+<li>Fetch <code>/robots.txt</code> before the homepage, careers pages or terms. Redirect targets get their own robots check.</li>
+<li>Discover up to three careers links and five terms/legal links, including legal links on careers pages.</li>
+<li>Look for English, German, French and Italian expressions around scraping, automated access, AI and data mining in those legal documents. Store the matched passage and source URL.</li>
+<li>Evaluate robots rules for <code>SwissJobsPolicyCheck</code>, the scanner's actual user agent. Also report careers-path exclusions for <code>GPTBot</code>, <code>ClaudeBot</code>, <code>Google-Extended</code> and <code>CCBot</code>, without using those identities for requests.</li>
+<li>Write the four CSV lists, a filterable HTML report and <code>results.json</code> with timestamps, response hashes, HTTP statuses, robots text and excerpts.</li>
+</ol>
+<p>AI-training exclusions do not necessarily forbid ordinary job indexing. This PoC deliberately excludes those sites pending review. A missing robots file with HTTP 404/410 permits the policy check to continue, but does not grant permission. A 401/403 robots response is conservatively blacklisted; other failed robots checks go to Review.</p>
+<h2>6. Limits of this PoC</h2>
+<ul>
+<li>It screens supplied URLs; it does not download individual job listings, applicant data or crawl the whole web.</li>
+<li>It uses bounded HTML discovery and keyword rules, not AI interpretation of contractual meaning. False positives and missed clauses are possible. Negation, cross-references, indirect restrictions and unsupported languages need human review.</li>
+<li>External ATS domains are not confirmed as company-owned. Same-host/subdomain checks are a hostname heuristic, not proof of ownership. Discovered external links are flagged; redirects are followed only with public-host validation and robots checks, then external ownership is flagged.</li>
+<li>No JavaScript rendering, login, PDF policy extraction, CAPTCHA solving, proxy rotation or bypassing of access controls.</li>
+<li>Each company is limited to 30 requests, 1 MB per response and a 12-second socket timeout. Requests are at least one second apart per origin. Supported crawl delays up to ten seconds are honoured; larger delays and request-rate directives require review. There is no whole-run time deadline.</li>
+<li>The local CLI rejects private/reserved destinations and nonstandard ports. It is not a hardened internet-facing fetch service and does not pin DNS resolutions against rebinding. Do not expose it as a public API.</li>
+<li>Robots matching covers groups, Allow/Disallow, longest match, wildcards, end anchors and percent-encoded paths. It is a small tested implementation, not a claim of complete RFC conformance.</li>
+</ul>
+<h2>7. Verify or extend</h2>
+<pre>python3 -m unittest -v</pre>
+<p>The tests cover classification, multilingual restriction examples, irrelevant AI news, missing terms, external ATS links, robots precedence and redirect checks, private addresses, escaped report content and exports. Add a fixture for a new policy wording before changing the matcher. For a larger next version, use manual acceptance records and a semantic classifier for ambiguous terms; keep the original evidence and conservative fallback.</p>
+<p>Technical reference: <a href="https://www.rfc-editor.org/rfc/rfc9309.html">RFC 9309, Robots Exclusion Protocol</a>. Its introduction explicitly separates robots rules from access authorization.</p>
+</html>

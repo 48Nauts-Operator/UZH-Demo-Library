@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Scan the QR code and try WhichFlight on your own phone. Real flights, your destination, your priorities.">
+  <meta name="theme-color" content="#f6f5f1">
+  <title>Try it out — WhichFlight</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/try.css">
+  <script type="module" src="/try.js"></script>
+</head>
+<body class="try-page">
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="WhichFlight home"><span class="brand-mark" aria-hidden="true">↗</span>Which<span>Flight</span></a>
+      <nav aria-label="Main navigation"><a href="/">Flight search <span aria-hidden="true">↗</span></a><a class="try-link" href="/try" aria-current="page">Try it out <span aria-hidden="true">▦</span></a></nav>
+    </header>
+    <main class="try-main">
+      <section class="try-copy" aria-labelledby="try-title">
+        <p class="eyebrow"><span></span> NOW IT’S YOUR TURN</p>
+        <h1 id="try-title">Try it out.<br><em>Your next flight.</em></h1>
+        <p class="try-intro">Where would you go?<br>Find real flights that fit your plans.</p>
+        <ol class="try-steps"><li><span>01</span> Open your phone’s camera.</li><li><span>02</span> Scan the QR code.</li><li><span>03</span> Tell us where, when, and what matters.</li></ol>
+        <a class="primary try-open" href="/">Try it on this device <span aria-hidden="true">↗</span></a>
+        <p class="try-note">No app. No account. Just your next trip.</p>
+      </section>
+      <section class="qr-panel" aria-labelledby="qr-title">
+        <div class="qr-heading"><h2 id="qr-title">Scan QR Code</h2><span class="qr-phone" aria-hidden="true">↗</span></div>
+        <div class="qr-frame"><img id="event-qr" width="800" height="800" alt="Scan to open WhichFlight on your phone" hidden><p id="qr-status" role="status">Preparing your QR code…</p></div>
+        <a id="event-link" class="event-link" href="/" aria-label="Open this WhichFlight website"></a>
+        <div class="qr-actions"><button class="outline" id="copy-link" type="button">Copy link</button><a class="outline" id="download-qr" download="whichflight-qr.svg" hidden>Download QR <span aria-hidden="true">↓</span></a><button class="text-button" id="fullscreen" type="button" hidden>Full screen <span aria-hidden="true">⤢</span></button></div>
+        <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+        <p class="local-warning" id="local-warning" hidden>This is a local address. Open this page through your public HTTPS link before sharing the QR code with the room.</p>
+      </section>
+    </main>
+    <footer><div><strong>WhichFlight</strong><span>An experiment by 48Nauts.</span></div><div><span>Powered by Jev</span><span>Real flight data · Prices in CHF</span></div></footer>
+  </div>
+</body>
+</html>

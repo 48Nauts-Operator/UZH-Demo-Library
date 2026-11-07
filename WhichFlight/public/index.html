@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Beschreibe deine Reise. WhichFlight findet günstige Flüge, die zu deinen Reisedaten passen. Preise in CHF, ohne Anmeldung.">
+  <title>WhichFlight — Günstig abheben.</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar"><a class="brand" href="/" aria-label="WhichFlight Startseite"><span class="brand-mark" aria-hidden="true">↗</span>Which<span>Flight</span></a><nav aria-label="Hauptnavigation"><a class="try-link" href="/try">Try it out <span aria-hidden="true">▦</span></a><a href="https://sensors-prairie-jane-easily.trycloudflare.com" target="_blank" rel="noopener noreferrer">WhichRide <span aria-hidden="true">↗</span></a><button class="text-button" id="about-open">Über die Suche <span aria-hidden="true">＋</span></button></nav></header>
+    <main>
+      <section class="hero" aria-labelledby="headline">
+        <div><p class="eyebrow"><span></span> DEIN NÄCHSTER FLUG. EINE SUCHE.</p><h1 id="headline">Weniger suchen.<br><em>Günstiger abheben.</em></h1><p class="intro">Sag uns, wohin du möchtest. Jev liest deine Wünsche.<br> Wir finden die günstigsten passenden Flüge in unserer Suche.</p></div>
+        <div class="flight-art" aria-hidden="true"><span class="art-label">MEHR REISE.<br>WENIGER SUCHEREI.</span><svg viewBox="0 0 340 170" fill="none"><path d="M20 134 Q130 125 165 52 Q205 -6 310 40" stroke="currentColor" stroke-opacity=".16" stroke-width="2" stroke-dasharray="5 7"/><path d="M20 134 Q95 139 136 100 Q193 44 269 51" stroke="currentColor" stroke-width="3"/><circle cx="20" cy="134" r="6" fill="#f6f5f1" stroke="currentColor" stroke-width="3"/><circle cx="136" cy="100" r="5" fill="#f6f5f1" stroke="currentColor" stroke-width="3"/><path d="m288 39-7 12 7 12-4 1-13-10-11-1-3 5-3 0 2-7-2-7 3 0 3 5 11-1 13-10z" fill="currentColor"/></svg><div class="art-bottom"><span>DEINE REISE</span><span>DEIN PREIS ↗</span></div></div>
+      </section>
+      <section class="search-panel" aria-labelledby="search-title">
+        <div class="panel-heading"><h2 id="search-title">Wohin darf’s gehen?</h2><span class="live-label"><span></span> Flugpreise in CHF</span></div>
+        <form id="search-form">
+          <label class="sr-only" for="request">Beschreibe deine Flugreise</label>
+          <div class="request-row"><textarea id="request" rows="2" maxlength="600" placeholder="Zürich nach Frankfurt am Donnerstag. Nicht vor 8 Uhr, mit Handgepäck." required></textarea><button class="primary" id="search-button" type="submit"><span>Günstige Flüge finden</span><span aria-hidden="true">↗</span></button></div>
+          <div class="search-options"><label class="checkbox"><input id="search-nonstop" type="checkbox" aria-describedby="nonstop-hint"> Nur Direktflüge</label><span id="nonstop-hint">Aktiviert gilt dieser Filter auch für deinen Reisetext.</span></div>
+          <div class="search-under"><div class="examples"><span>Zum Ausprobieren</span><button type="button" data-example="Zürich nach Frankfurt am Donnerstag.">Frankfurt am Donnerstag ↗</button><button type="button" data-example="Zürich nach Barcelona am Freitag, zurück am Sonntag. Eine Person.">Ein Wochenende in Barcelona ↗</button></div><button class="text-button fields-toggle" type="button" id="fields-toggle" aria-expanded="false" aria-controls="fields">Reisedaten eingeben <span aria-hidden="true">＋</span></button></div>
+          <p class="privacy-note">Dein Reisetext wird von Jev gelesen. Die Flugsuche erhält nur die Reisedaten. <button type="button" class="inline-button" id="privacy-open">Mehr erfahren</button></p>
+        </form>
+        <form id="fields" hidden>
+          <div class="fields-grid">
+            <label>Von<select id="origin" name="origin" required></select></label><label>Nach<select id="destination" name="destination" required></select></label>
+            <label>Hinflug<input id="outboundDate" name="outboundDate" type="date" required></label><label>Rückflug <span class="optional">optional</span><input id="returnDate" name="returnDate" type="date"></label>
+            <label>Erwachsene<select id="adults" name="adults"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+            <label>Kinder ab 2<select id="children" name="children"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+            <label>Gepäck<select id="baggage" name="baggage"><option value="personal">Kleines persönliches Gepäck</option><option value="carry">Handgepäck-Koffer</option><option value="checked">Aufgabegepäck nötig</option></select></label>
+            <label>Budget gesamt, CHF<input type="number" id="maxPrice" name="maxPrice" min="1" max="100000" placeholder="Offen"></label>
+          </div>
+          <details class="time-fields"><summary>Uhrzeiten eingrenzen</summary><div class="fields-grid"><label>Hinflug: Abflug ab<input id="departAfter" type="time"></label><label>Hinflug: Ankunft bis<input id="arriveBefore" type="time"></label><label>Rückflug: Abflug ab<input id="returnAfter" type="time"></label><label>Rückflug: Ankunft bis<input id="returnBefore" type="time"></label></div></details>
+          <div class="fields-bottom"><label class="checkbox"><input id="nonstop" type="checkbox"> Nur Direktflüge</label><button class="primary compact" id="fields-button" type="submit">Mit diesen Daten suchen ↗</button></div>
+        </form>
+      </section>
+      <div id="status" role="status" aria-live="polite" hidden></div>
+      <section id="results" aria-label="Flugergebnisse" hidden>
+        <div class="results-heading"><div><p class="eyebrow">DEINE MÖGLICHKEITEN</p><h2 id="route-title"></h2><p id="route-detail"></p></div><button class="text-button" id="edit-search">Suche anpassen ↗</button></div>
+        <div id="criteria" class="criteria"></div><div id="result-notices"></div>
+        <div id="result-meta" class="result-meta"></div><div id="cards" class="cards"></div>
+        <div class="results-footer"><button id="more-results" class="outline" hidden>Weitere Flüge anzeigen</button><a id="source-link" target="_blank" rel="noopener noreferrer">Suche bei Google Flights öffnen ↗</a></div>
+        <p class="fare-note">Preise für alle angegebenen Reisenden, Economy, in CHF. Verfügbarkeit und Endpreis werden beim Anbieter bestätigt. Gepäck- und Zusatzkosten können abweichen.</p>
+      </section>
+      <section class="explanation" id="explanation"><div><p class="eyebrow">EIN SATZ REICHT.</p><h2>Deine Reise.<br>Deine Bedingungen.</h2></div><div><span class="step">01</span><h3>Reise beschreiben</h3><p>Ziel, Datum, Gepäck. So, wie du es einer Person erzählen würdest.</p></div><div><span class="step">02</span><h3>Preise vergleichen</h3><p>Die günstigsten gefundenen Optionen. Mit Zeiten und Umstiegen direkt im Blick.</p></div><div><span class="step">03</span><h3>Beim Anbieter buchen</h3><p>Ein passender Flug? Prüfe das Angebot und buche direkt beim Anbieter.</p></div></section>
+    </main>
+    <footer><div><strong>WhichFlight</strong><span>Ein Experiment von 48Nauts.</span></div><div><span>Powered by Jev</span><span>Flugdaten: Google Flights via SerpApi</span></div></footer>
+  </div>
+  <dialog id="about"><button id="about-close" class="dialog-close" aria-label="Schliessen">×</button><p class="eyebrow">ÜBER WHICHFLIGHT</p><h2>Ein Satz. Eine Flugsuche.</h2><p>Jev von TypeSafe übersetzt deinen Reisetext in Suchfelder. Die Flugpreise kommen von Google Flights über SerpApi. Die gefundenen passenden Angebote werden nach Preis sortiert.</p><p>Für Hin- und Rückflüge prüfen wir passende Rückflüge zu den drei günstigsten gefundenen Hinflug-Optionen. Wir durchsuchen nicht jede mögliche Kombination. Preise können sich bis zur Buchung ändern.</p><p>Handgepäck wird als Suchfilter übermittelt. Aufgabegepäck ist in der ersten Suche nicht verlässlich eingepreist und wird als offen markiert. Bitte prüfe die Gepäckregeln im konkreten Buchungsangebot.</p><p>Der Reisetext geht an TypeSafe; strukturierte Reisedaten gehen an SerpApi. Bitte keine Namen, Buchungsnummern oder Zahlungsdaten eingeben. WhichFlight hält Suchsitzungen kurzzeitig im Arbeitsspeicher. Preisantworten werden lokal zwischengespeichert. Anbieter können Anfragen gemäss ihren Bedingungen speichern.</p><p>Unabhängiges Experiment von 48Nauts. Keine Verbindung zu einer Fluggesellschaft oder Google. Keine Anmeldung und keine Buchung auf dieser Website.</p></dialog>
+</body>
+</html>

@@ -1,0 +1,200 @@
+[
+  {
+    "company": "DEMO · Careers + clear terms",
+    "url": "https://example.ch/",
+    "checked_at": "2026-11-06T18:53:10.836615+00:00",
+    "status": "Good",
+    "reason": "Careers and terms checked; no restriction detected by the heuristic",
+    "jobs": [
+      "https://example.ch/jobs"
+    ],
+    "terms": [
+      "https://example.ch/terms"
+    ],
+    "evidence": [],
+    "issues": [],
+    "robots": [
+      {
+        "origin": "https://example.ch",
+        "url": "https://example.ch/robots.txt",
+        "status": "fetched",
+        "text": ""
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://example.ch/",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      },
+      {
+        "url": "https://example.ch/jobs",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      },
+      {
+        "url": "https://example.ch/terms",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      }
+    ]
+  },
+  {
+    "company": "DEMO · Scraping prohibited",
+    "url": "https://example.ch/",
+    "checked_at": "2026-11-06T18:53:10.837350+00:00",
+    "status": "Blacklist",
+    "reason": "Restriction detected; excluded by conservative screening policy",
+    "jobs": [
+      "https://example.ch/jobs"
+    ],
+    "terms": [
+      "https://example.ch/terms"
+    ],
+    "evidence": [
+      {
+        "type": "restriction",
+        "url": "https://example.ch/terms",
+        "excerpt": "Automated scraping is prohibited."
+      }
+    ],
+    "issues": [],
+    "robots": [
+      {
+        "origin": "https://example.ch",
+        "url": "https://example.ch/robots.txt",
+        "status": "fetched",
+        "text": ""
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://example.ch/",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      },
+      {
+        "url": "https://example.ch/jobs",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      },
+      {
+        "url": "https://example.ch/terms",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      }
+    ]
+  },
+  {
+    "company": "DEMO · AI robot excluded",
+    "url": "https://example.ch/",
+    "checked_at": "2026-11-06T18:53:10.837621+00:00",
+    "status": "Blacklist",
+    "reason": "Restriction detected; excluded by conservative screening policy",
+    "jobs": [
+      "https://example.ch/jobs"
+    ],
+    "terms": [
+      "https://example.ch/terms"
+    ],
+    "evidence": [
+      {
+        "type": "ai_robot_block",
+        "url": "https://example.ch/robots.txt",
+        "excerpt": "GPTBot: disallow: /; checked careers URL https://example.ch/jobs"
+      }
+    ],
+    "issues": [],
+    "robots": [
+      {
+        "origin": "https://example.ch",
+        "url": "https://example.ch/robots.txt",
+        "status": "fetched",
+        "text": "User-agent: GPTBot\nDisallow: /"
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://example.ch/",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      },
+      {
+        "url": "https://example.ch/jobs",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      },
+      {
+        "url": "https://example.ch/terms",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      }
+    ]
+  },
+  {
+    "company": "DEMO · Terms missing",
+    "url": "https://example.ch/",
+    "checked_at": "2026-11-06T18:53:10.837872+00:00",
+    "status": "Review",
+    "reason": "Missing, ambiguous or incomplete evidence; manual review required",
+    "jobs": [
+      "https://example.ch/jobs"
+    ],
+    "terms": [],
+    "evidence": [],
+    "issues": [],
+    "robots": [
+      {
+        "origin": "https://example.ch",
+        "url": "https://example.ch/robots.txt",
+        "status": "fetched",
+        "text": ""
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://example.ch/",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      },
+      {
+        "url": "https://example.ch/jobs",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      }
+    ]
+  },
+  {
+    "company": "DEMO · No careers link",
+    "url": "https://example.ch/",
+    "checked_at": "2026-11-06T18:53:10.838067+00:00",
+    "status": "No jobs found",
+    "reason": "No careers link discovered on the supplied homepage",
+    "jobs": [],
+    "terms": [
+      "https://example.ch/terms"
+    ],
+    "evidence": [],
+    "issues": [],
+    "robots": [
+      {
+        "origin": "https://example.ch",
+        "url": "https://example.ch/robots.txt",
+        "status": "fetched",
+        "text": ""
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://example.ch/",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      },
+      {
+        "url": "https://example.ch/terms",
+        "http_status": 200,
+        "sha256": "synthetic-fixture"
+      }
+    ]
+  }
+]

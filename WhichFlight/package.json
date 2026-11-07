@@ -1,0 +1,25 @@
+{
+  "name": "whichflight",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "event": "node scripts/event.mjs",
+    "event:qr": "node scripts/event-qr.mjs",
+    "event:check": "node scripts/event-check.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:browser": "node scripts/check-browser.mjs"
+  },
+  "dependencies": {
+    "chrono-node": "^2.8.0",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}

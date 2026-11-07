@@ -1,0 +1,90 @@
+[
+  {
+    "company": "Swisscom",
+    "url": "https://www.swisscom.ch/",
+    "checked_at": "2026-11-06T18:51:53.933984+00:00",
+    "status": "Review",
+    "reason": "Missing, ambiguous or incomplete evidence; manual review required",
+    "jobs": [
+      "https://www.swisscom.ch/en/about/career/vacancies.t2.html"
+    ],
+    "terms": [],
+    "evidence": [],
+    "issues": [],
+    "robots": [
+      {
+        "origin": "https://www.swisscom.ch",
+        "url": "https://www.swisscom.ch/robots.txt",
+        "status": "fetched",
+        "text": "#\n# robots.txt: please contact webmaster@swisscom.com for\n#             further information\n#\nUser-Agent: Googlebot\nDisallow:\n#\nUser-Agent: Googlebot-image\nDisallow:\n#\nUser-Agent: Ultraseek\nDisallow:\n#\nUser-Agent: search.ch\nDisallow:\n#\nUser-Agent: *\nAllow: /etc/swisscom/servlets/public/sitemap/\nAllow: /etc/designs/\nDisallow: /solutions/redirect?\nDisallow: /cgi-bin/\nDisallow: /etc/\nDisallow: /fx/e-tools-public/\nDisallow: /hr/e-tools-public/\nDisallow: /ir/e-tools-public/\nDisallow: /pr/e-tools-public/\nDisallow: /errors/\nDisallow: /mobile/\nDisallow: /de/header/\nDisallow: /de/header-mobile/\nDisallow: /fr/header/\nDisallow: /fr/header-mobile/\nDisallow: /en/header/\nDisallow: /en/header-mobile/\nDisallow: /it/header/\nDisallow: /it/header-mobile/\nDisallow: /*.print.html\nDisallow: /*.mobile.html\nDisallow: /*allNews.html?tag=\nDisallow: /*.subcomponent.html$\nDisallow: /de/business/kmu/beta/\nDisallow: /de/biz/sme/beta/\nDisallow: /fr/business/pme/beta/\nDisallow: /fr/biz/sme/beta/\nDisallow: /it/business/pmi/beta/\nDisallow: /it/biz/sme/beta/\nDisallow: /en/business/sme/beta/\nDisallow: /en/biz/sme/beta/\nDisallow: /de/responsive-header/\nDisallow: /fr/responsive-header/\nDisallow: /it/responsive-header/\nDisallow: /en/responsive-header/\nDisallow: /content/complan/\nDisallow: /sme/elearning-security/\nDisallow: /*/ursa/\nDisallow: /*/ursa-notfall/\nDisallow: /*/residential-additional-pages/\nDisallow: /*/kmu-hidden-pages/\nDisallow: /*/component-gallery/\nDisallow: /*/chat2call/\nDisallow: /*/one-to-one/\nDisallow: /*/personal-offer/\nDisallow: /*/help-widget/\nDisallow: /*/my-swisscom-redirects/\"\t\t\t\nAllow: /\n\nSitemap: https://www.swisscom.ch/sitemap.xml\n"
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://www.swisscom.ch/robots.txt",
+        "http_status": 200,
+        "sha256": "5d2b8bade6f1ce16c6cb103483b09cd72a2b9fa86627824e235be6112218ca54"
+      },
+      {
+        "url": "https://www.swisscom.ch/",
+        "http_status": 301,
+        "sha256": "208fe61c1f9452fbab0b43d6d0cd003bf712a6dccf1e5a54b9003db755748dba"
+      },
+      {
+        "url": "https://www.swisscom.ch/de/privatkunden.html",
+        "http_status": 200,
+        "sha256": "9b386a04ad59c6bf4457f920d3675f71f4f397aadd1ffb91bbe87d75213ba38d"
+      },
+      {
+        "url": "https://www.swisscom.ch/en/about/career/vacancies.t2.html",
+        "http_status": 200,
+        "sha256": "6009a056c1d491c3c63759fca17c3b1f2cef6437bf458e8c3c804d12d9394801"
+      }
+    ]
+  },
+  {
+    "company": "Digitec Galaxus",
+    "url": "https://www.galaxus.ch/",
+    "checked_at": "2026-11-06T18:51:57.117291+00:00",
+    "status": "Good",
+    "reason": "Careers and terms checked; no restriction detected by the heuristic",
+    "jobs": [
+      "https://www.galaxus.ch/de/joboffer"
+    ],
+    "terms": [
+      "https://www.galaxus.ch/de/guide/5"
+    ],
+    "evidence": [],
+    "issues": [],
+    "robots": [
+      {
+        "origin": "https://www.galaxus.ch",
+        "url": "https://www.galaxus.ch/robots.txt",
+        "status": "fetched",
+        "text": "#            @/                          @/                        Hello, fellow humans!\n#            @/                          @/                        Interested in joining as a technical SEO specialist or developer? Have a look at https://www.galaxus.ch/joboffer\n#            @/                          @/\n#        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@              @@@@\n#       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@           @@@@\n#       @@@@@@        @@@@@@@@@@@@        @@@@@@          @@@%           @\n#       @@@@@         /@@@@@@@@@@         @@@@@@          @@@           @@\n#       @@@@@@        @@@@@@@@@@@,        @@@@@@           @@@@       @@@@\n#       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@@@\n#       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@\n#       @@@@@@@@@@@@@             @@@@@@@@@@@@@@       @@@@@@@@\n#       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     @@@@@@@@@\n#        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     @@@@@@@@@\n\nUser-agent: sogou spider\nDisallow: /\n\nUser-agent: Yandex\nDisallow: /\n\nUser-agent: EventMachine HttpClient\nDisallow: /\n\nUser-agent: niki-bot\nDisallow: /\n\nUser-agent: Pinterestbot\nCrawl-delay: 0.2\n\n\nUser-Agent: *\nDisallow: /cert\nDisallow: /Files\nAllow: /Files/sitemap/*\nAllow: /Files/iso/*\nAllow: /Files/*.jpg\nAllow: /Files/*.jpeg\nAllow: /Files/*.ashx\nAllow: /Files/*.png\nAllow: /Files/*.tif\nAllow: /Files/*.JPG\nAllow: /Files/*.JPEG\nAllow: /Files/*.ASHX\nAllow: /Files/*.PNG\nAllow: /Files/*.TIF\nAllow: /Files/*.Jpeg\nAllow: /Files/*.Jpg\nAllow: /im/*\nDisallow: */Explore?\nDisallow: */explore?\nDisallow: */Explore/*\nDisallow: */explore/*\nDisallow: */Search\nDisallow: */search\nDisallow: */SaleNew\nDisallow: */salenew\nDisallow: */SaleIso\nDisallow: */saleiso\nDisallow: */Comparison/\nDisallow: */comparison/\nDisallow: */User/\nDisallow: */user/\nDisallow: */NewDiscussion/\nDisallow: */newdiscussion/\nDisallow: */Ratings/RatingForm\nDisallow: */ratings/ratingform\nDisallow: */MarketingTeaser/SaveNewImpressions/\nDisallow: */marketingteaser/savenewimpressions/\nDisallow: */Management\nDisallow: */management\nDisallow: */*filterGrid=\nDisallow: */*filtergrid=\nDisallow: */archived-orders\nDisallow: */preview/blog-teaser\nDisallow: */cart\nDisallow: */checkout\nDisallow: */comparison/\nDisallow: */credit-notes\nDisallow: */customeraccount\nDisallow: */gift-cards\nDisallow: */gift-coupons\nDisallow: */live-feed\nDisallow: */customeraccount/login\nDisallow: */marketplace/\nDisallow: */mobile-apps\nDisallow: */order\nDisallow: */page/preview/\nDisallow: */cases/register\nDisallow: */return-cases/register\nDisallow: */service-cases/register\nDisallow: */shoplist/\nDisallow: */testreport/\nDisallow: */user/\nDisallow: */ProductRating/\nAllow: */Management-Photos\nAllow: */management-photos\nDisallow: */graphql/send-consent-reporting-event\nDisallow: */graphql/get-country-redirect\nDisallow: */explore-alternatives-with-good-availability\nDisallow: */explore-assembler\nDisallow: */explore-auto-ml\nDisallow: */explore-buy-it-again\nDisallow: */explore-continue-browsing\nDisallow: */explore-explicit-accessories\nDisallow: */explore-hot-new-products\nDisallow: */explore-implicit-accessories\nDisallow: */explore-on-sale-for-you\nDisallow: */explore-product-sales-ranking\nDisallow: */explore-recently-visited-products\nDisallow: */explore-similar-products\nDisallow: /nl$\nDisallow: /nl/\nDisallow: /webview/*\nDisallow: /*/webview/*\n\nSitemap: https://www.galaxus.ch/sitemap/v2/default-sitemap.xml\nSitemap: https://www.galaxus.ch/sitemap/v2/producttypes-sitemap.xml\nSitemap: https://www.galaxus.ch/sitemap/v2/products-sitemap.xml\nSitemap: https://www.galaxus.ch/sitemap/v2/news-sitemap.xml"
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://www.galaxus.ch/robots.txt",
+        "http_status": 200,
+        "sha256": "8e33153c732c2a944c777936b71beff4df3e4a4fc131b8607c9bb7829657db33"
+      },
+      {
+        "url": "https://www.galaxus.ch/",
+        "http_status": 200,
+        "sha256": "f8e11d19c666594360a45906d62b5c3e803c9f73dbc18e3d3e8f805a49a06338"
+      },
+      {
+        "url": "https://www.galaxus.ch/de/joboffer",
+        "http_status": 200,
+        "sha256": "ff82247e04d2a6accb857551ec4676a505779b8dd3f90853ccb8a2135f071743"
+      },
+      {
+        "url": "https://www.galaxus.ch/de/guide/5",
+        "http_status": 200,
+        "sha256": "50c27b1471e6bb23e04c5ccc5f12e87e0d4f39c45c4374824f1fcf3f150fd939"
+      }
+    ]
+  }
+]
