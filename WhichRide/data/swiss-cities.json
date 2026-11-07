@@ -1,0 +1,252 @@
+[
+  {
+    "query": "Bern",
+    "id": "8507000",
+    "name": "Bern"
+  },
+  {
+    "query": "Basel SBB",
+    "id": "8500010",
+    "name": "Basel SBB"
+  },
+  {
+    "query": "Luzern",
+    "id": "8505000",
+    "name": "Luzern"
+  },
+  {
+    "query": "Lugano",
+    "id": "8505300",
+    "name": "Lugano"
+  },
+  {
+    "query": "Genève",
+    "id": "8501008",
+    "name": "Genève"
+  },
+  {
+    "query": "Lausanne",
+    "id": "8501120",
+    "name": "Lausanne"
+  },
+  {
+    "query": "Winterthur",
+    "id": "8506000",
+    "name": "Winterthur"
+  },
+  {
+    "query": "St. Gallen",
+    "id": "8506302",
+    "name": "St. Gallen"
+  },
+  {
+    "query": "Biel/Bienne",
+    "id": "8504300",
+    "name": "Biel/Bienne"
+  },
+  {
+    "query": "Thun",
+    "id": "8507100",
+    "name": "Thun"
+  },
+  {
+    "query": "Fribourg/Freiburg",
+    "id": "8504100",
+    "name": "Fribourg/Freiburg"
+  },
+  {
+    "query": "Neuchâtel",
+    "id": "8504221",
+    "name": "Neuchâtel"
+  },
+  {
+    "query": "Chur",
+    "id": "8509000",
+    "name": "Chur"
+  },
+  {
+    "query": "Schaffhausen",
+    "id": "8503424",
+    "name": "Schaffhausen"
+  },
+  {
+    "query": "Zug",
+    "id": "8502204",
+    "name": "Zug"
+  },
+  {
+    "query": "Aarau",
+    "id": "8502113",
+    "name": "Aarau"
+  },
+  {
+    "query": "Baden",
+    "id": "8503504",
+    "name": "Baden"
+  },
+  {
+    "query": "Solothurn",
+    "id": "8500207",
+    "name": "Solothurn"
+  },
+  {
+    "query": "Olten",
+    "id": "8500218",
+    "name": "Olten"
+  },
+  {
+    "query": "Wil SG",
+    "id": "8506206",
+    "name": "Wil SG"
+  },
+  {
+    "query": "Rapperswil SG",
+    "id": "8503110",
+    "name": "Rapperswil SG"
+  },
+  {
+    "query": "Uster",
+    "id": "8503125",
+    "name": "Uster"
+  },
+  {
+    "query": "Dübendorf",
+    "id": "8503128",
+    "name": "Dübendorf"
+  },
+  {
+    "query": "Frauenfeld",
+    "id": "8506100",
+    "name": "Frauenfeld"
+  },
+  {
+    "query": "Kreuzlingen",
+    "id": "8506131",
+    "name": "Kreuzlingen"
+  },
+  {
+    "query": "Rorschach",
+    "id": "8506311",
+    "name": "Rorschach"
+  },
+  {
+    "query": "Romanshorn",
+    "id": "8506121",
+    "name": "Romanshorn"
+  },
+  {
+    "query": "Weinfelden",
+    "id": "8506105",
+    "name": "Weinfelden"
+  },
+  {
+    "query": "Sion",
+    "id": "8501506",
+    "name": "Sion"
+  },
+  {
+    "query": "Sierre/Siders",
+    "id": "8501509",
+    "name": "Sierre/Siders"
+  },
+  {
+    "query": "Brig",
+    "id": "8501609",
+    "name": "Brig"
+  },
+  {
+    "query": "Visp",
+    "id": "8501605",
+    "name": "Visp"
+  },
+  {
+    "query": "Montreux",
+    "id": "8501300",
+    "name": "Montreux"
+  },
+  {
+    "query": "Vevey",
+    "id": "8501200",
+    "name": "Vevey"
+  },
+  {
+    "query": "Nyon",
+    "id": "8501030",
+    "name": "Nyon"
+  },
+  {
+    "query": "Morges",
+    "id": "8501037",
+    "name": "Morges"
+  },
+  {
+    "query": "Yverdon-les-Bains",
+    "id": "8504200",
+    "name": "Yverdon-les-Bains"
+  },
+  {
+    "query": "Delémont",
+    "id": "8500109",
+    "name": "Delémont"
+  },
+  {
+    "query": "Porrentruy",
+    "id": "8500126",
+    "name": "Porrentruy"
+  },
+  {
+    "query": "Bellinzona",
+    "id": "8505213",
+    "name": "Bellinzona"
+  },
+  {
+    "query": "Locarno",
+    "id": "8505400",
+    "name": "Locarno"
+  },
+  {
+    "query": "Chiasso",
+    "id": "8505307",
+    "name": "Chiasso"
+  },
+  {
+    "query": "Mendrisio",
+    "id": "8505305",
+    "name": "Mendrisio"
+  },
+  {
+    "query": "Interlaken Ost",
+    "id": "8507492",
+    "name": "Interlaken Ost"
+  },
+  {
+    "query": "Spiez",
+    "id": "8507483",
+    "name": "Spiez"
+  },
+  {
+    "query": "Burgdorf",
+    "id": "8508005",
+    "name": "Burgdorf"
+  },
+  {
+    "query": "Langenthal",
+    "id": "8508100",
+    "name": "Langenthal"
+  },
+  {
+    "query": "Sursee",
+    "id": "8502007",
+    "name": "Sursee"
+  },
+  {
+    "query": "Zofingen",
+    "id": "8502001",
+    "name": "Zofingen"
+  },
+  {
+    "query": "Davos Platz",
+    "id": "8509073",
+    "name": "Davos Platz"
+  }
+]

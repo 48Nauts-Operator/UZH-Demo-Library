@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Deine Verbindung. Dein Alltag. Vergleiche echte Schweizer ÖV-Verbindungen mit einer persönlichen Sortierung durch Jev.">
+  <title>WhichRide — Deine Reise, besser sortiert.</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class="brand" href="/" aria-label="WhichRide Startseite"><span class="brand-mark" aria-hidden="true">↗</span>Which<span>Ride</span><span class="beta">BETA</span></a>
+  <div class="header-right"><span class="swiss"><i aria-hidden="true">+</i> Made for Swiss journeys</span><button class="text-button" id="about-button">So funktioniert’s <span aria-hidden="true">↗</span></button></div>
+</header>
+<main class="wrap">
+  <section class="intro">
+    <div><p class="eyebrow"><span class="red-line"></span> DEIN FAHRPLAN. MIT GEFÜHL FÜR DEINEN ALLTAG.</p><h1>Die Verbindung zählt.<br><span>Deine Wünsche auch.</span></h1>
+    <p class="intro-text">Erst die Reise suchen. Dann erzählen, was dir wichtig ist.<br class="desktop"> Sieh direkt, welche Verbindung Jev für dich nach vorne holt.</p></div>
+    <div class="hero-route" aria-hidden="true"><span class="route-label">VON A NACH B.<br>AUF DEINE ART.</span><svg viewBox="0 0 300 130" fill="none"><path d="M16 98H72C94 98 93 31 124 31H204C236 31 226 98 258 98H286" stroke="#d8d8cf" stroke-width="2" stroke-dasharray="5 5"/><path d="M16 98H76C115 98 101 63 146 63H211C239 63 235 98 286 98" stroke="#dd382b" stroke-width="4"/><circle cx="16" cy="98" r="7" fill="#f5f4ef" stroke="#252722" stroke-width="3"/><circle cx="146" cy="63" r="5" fill="#f5f4ef" stroke="#dd382b" stroke-width="3"/><circle cx="286" cy="98" r="7" fill="#dd382b"/><path d="m204 25 6 6-6 6" stroke="#b8b9af" stroke-width="2"/></svg><div class="route-foot"><span>FAHRPLAN</span><span>+ DEIN KONTEXT</span></div></div>
+  </section>
+  <section class="search-panel" aria-labelledby="search-heading">
+    <div class="section-kicker"><span class="step-number">01</span><h2 id="search-heading">Wohin geht’s?</h2><span class="live-tag"><i></i> Echte Fahrplandaten</span></div>
+    <form id="search-form">
+      <div class="search-fields">
+        <label class="station-field">Von<input id="from" name="from" value="Zürich HB" list="from-options" autocomplete="off" required maxlength="100"><datalist id="from-options"></datalist></label>
+        <button class="swap" id="swap" type="button" aria-label="Start und Ziel tauschen">⇄</button>
+        <label class="station-field">Nach<input id="to" name="to" value="Bern" list="to-options" autocomplete="off" required maxlength="100"><datalist id="to-options"></datalist></label>
+        <label>Datum<input id="date" name="date" type="date" required></label>
+        <label class="time-label"><select id="mode" name="mode" aria-label="Abfahrt oder Ankunft"><option value="departure">Abfahrt ab</option><option value="arrival">Ankunft bis</option></select><input id="time" name="time" type="time" required value="08:00"></label>
+        <button class="button primary search-button" id="search-button" type="submit">Verbindungen zeigen <span aria-hidden="true">↗</span></button>
+      </div>
+    </form>
+    <div class="popular"><span>Zum Ausprobieren</span><button type="button" data-route="Zürich HB|Bern">Zürich → Bern</button><button type="button" data-route="Luzern|Lugano">Luzern → Lugano</button><button type="button" data-route="Basel SBB|Interlaken Ost">Basel → Interlaken</button></div>
+  </section>
+  <div id="search-status" class="status" role="status" aria-live="polite"></div>
+  <section id="workspace" class="workspace" hidden>
+    <section class="context-panel" aria-labelledby="context-heading">
+      <div class="context-copy"><div class="section-kicker"><span class="step-number">02</span><h2 id="context-heading">Jetzt kommst du ins Spiel.</h2></div><p>Was macht eine gute Reise für dich aus?</p><span class="powered">✳ JEV SORTIERT FÜR DICH</span></div>
+      <form id="rank-form" class="context-form">
+        <label class="sr-only" for="preferences">Was ist dir bei dieser Reise wichtig?</label>
+        <div class="context-input"><textarea id="preferences" rows="2" minlength="5" maxlength="600" placeholder="Zum Beispiel: Ich brauche 45 Minuten am Stück im Zug, um in Ruhe etwas vorzubereiten." required></textarea><button id="rank-button" class="button dark" type="submit">Für mich sortieren <span aria-hidden="true">✳</span></button></div>
+        <div class="chips"><button type="button" data-preference="Ich brauche mindestens 45 Minuten am Stück im Zug zum Arbeiten. Eine etwas längere Fahrt ist dafür in Ordnung.">▤ Zeit zum Arbeiten</button><button type="button" data-preference="Ich reise mit zwei kleinen Kindern und Gepäck. Möglichst wenig umsteigen; bei Umstiegen möchte ich mindestens 10 Minuten Zeit haben.">☺ Mit Kindern unterwegs</button><button type="button" data-preference="Ich mag keine hektischen Umstiege. Lieber etwas länger unterwegs, dafür direkt oder mindestens 12 Minuten Umsteigezeit.">↝ Ohne Umsteigestress</button></div>
+        <p class="privacy-note">Deine Wünsche und die Verbindungen werden zur Bewertung an TypeSafe gesendet. SBB-Preise laden separat; Jev bewertet bisher die Fahrplandaten.</p>
+      </form>
+    </section>
+    <div id="rank-status" class="status" role="status" aria-live="polite"></div>
+    <div class="fare-check"><div><strong>SBB-Preise direkt bei deiner Verbindung</strong><p id="fare-status" role="status" aria-live="polite">Preise werden nach der Suche automatisch geladen.</p></div><label>Preisvergleich für<select id="reduction" aria-label="SBB Preisvergleich für"><option value="half-fare">Mit Halbtax</option><option value="none">Ohne Ermässigung</option></select></label><a id="sbb-search-link" class="button fare-button" target="_blank" rel="noreferrer">Bei SBB prüfen ↗</a></div>
+    <div class="comparison-heading"><div><h2 id="route-title">Deine Verbindungen</h2><p id="route-subtitle"></p></div><span class="comparison-note">Gleiche Verbindungen. Eine neue Perspektive.</span></div>
+    <div class="compare-grid">
+      <section class="column original" aria-labelledby="original-heading"><div class="column-heading"><div><span class="column-label">DER AUSGANGSPUNKT</span><h3 id="original-heading">Nach Fahrplan</h3></div><span class="column-icon" aria-hidden="true">≡</span></div><p class="column-description">Die Reihenfolge aus der Fahrplansuche.</p><div id="original-results" class="results"></div></section>
+      <section class="column personal" aria-labelledby="personal-heading"><div class="column-heading"><div><span class="column-label">MIT DEINEN WÜNSCHEN</span><h3 id="personal-heading">Für dich sortiert</h3></div><span class="column-icon spark" aria-hidden="true">✳</span></div><p id="personal-description" class="column-description">Hier macht dein Kontext den Unterschied.</p><div id="personal-results" class="results"><div class="empty-personal"><span class="large-spark" aria-hidden="true">✳</span><h4>Deine Reise ist persönlich.<br>Dein Fahrplan jetzt auch.</h4><p>Ergänze oben deine Wünsche.<br>Jev vergleicht die Verbindungen für dich.</p><span class="empty-arrow" aria-hidden="true">↑</span></div></div></section>
+    </div>
+    <p class="data-note" id="data-note"></p>
+  </section>
+  <section id="welcome" class="welcome"><div><span class="welcome-number">01 — 02 — 03</span><h2>Ein kleiner Zusatz.<br>Eine andere Entscheidung.</h2></div><p>Eine lange Fahrt kann genau richtig sein, wenn du Zeit zum Arbeiten brauchst. Ein paar Minuten mehr beim Umsteigen können den Unterschied machen, wenn die Kinder mitkommen.</p><p>WhichRide stellt den Fahrplan und deine persönliche Sortierung nebeneinander. So kannst du selbst entscheiden, was besser zu dir passt.</p></section>
+</main>
+<footer class="wrap"><div class="footer-brand">WhichRide <span>Ein Experiment von 48Nauts.</span></div><div><a href="https://transport.opendata.ch/" target="_blank" rel="noreferrer">Daten: Opendata.ch</a><span>·</span><a href="https://typesafe.ai/" target="_blank" rel="noreferrer">Powered by Jev</a><span>·</span><button class="text-button" id="privacy-button">Über diese Website</button></div><p>Unabhängiges Projekt. Keine Verbindung zur SBB. Aktuelle Reiseinformationen und Billette bitte beim Verkehrsunternehmen prüfen.</p></footer>
+<dialog id="about"><button id="close-about" class="close-dialog" aria-label="Schliessen">×</button><p class="eyebrow">WELCHE VERBINDUNG PASST ZU DIR?</p><h2>Fahrplan + dein Alltag.</h2><p>WhichRide lädt bis zu acht echte Verbindungen von transport.opendata.ch. Links bleibt ihre ursprüngliche Reihenfolge sichtbar. Rechts bewertet Jev von TypeSafe, wie gut jede Verbindung zu deinen Wünschen passt.</p><p>Jev bewertet vorhandene Informationen: Dauer, Umstiege, Umsteigezeiten und zusammenhängende Zeit im Zug. Die angezeigten Hinweise stammen aus diesen Fahrplandaten. Die Sortierung ist eine Einschätzung, keine Garantie.</p><h3>Was wir nicht wissen</h3><p>SBB-Abpreise werden separat geladen und nur eindeutig passenden Verbindungen zugeordnet. Sie können sich ändern; die Buchungsbedingungen stehen bei SBB. Freie Sitzplätze, Ruhe, WLAN, Rollstuhltauglichkeit und Liftstatus liefert diese Suche nicht. Wenn deine Wünsche davon abhängen, kennzeichnen wir die Verbindung mit «Angaben fehlen».</p><h3>Deine Daten</h3><p>Für die Fahrplansuche gehen Start, Ziel und Reisezeit an Opendata.ch. Für die automatische Preisabfrage gehen die Reisedaten und die gewählte Ermässigung auch an SBB. Erst beim Klick auf «Für mich sortieren» gehen deine Wünsche und die Verbindungen an TypeSafe. Auf unserem Server bleiben Suchergebnisse und Bewertungen vorübergehend im Arbeitsspeicher (bis zu zehn Minuten). Es gibt keine Benutzerkonten, Tracking-Cookies oder Analytics. Der Hosting-Anbieter kann technische Zugriffsprotokolle führen.</p><p><a href="https://docs.typesafe.ai/legal" target="_blank" rel="noreferrer">Datenschutz und Bedingungen von TypeSafe ↗</a></p></dialog>
+</body></html>

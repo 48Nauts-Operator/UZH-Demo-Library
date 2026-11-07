@@ -2,6 +2,7 @@
 
 Small demos and tools from the University of Zurich talk. Each folder contains its own setup instructions.
 
+- [WhichRide](WhichRide/README.md): real Swiss transport connections compared with Jev preference rankings. Timetables need no key; ranking uses your TypeSafe key.
 - [WhichFlight](WhichFlight/README.md): Jev interprets a travel request; SerpApi supplies real Google Flights quotes. Requires your own TypeSafe and SerpApi keys.
 - [Job-Scraper-Tooling](Job-Scraper-Tooling/README.md): checks careers pages, website terms and robots rules, with evidence and CSV lists. Uses Python without API keys.
 
