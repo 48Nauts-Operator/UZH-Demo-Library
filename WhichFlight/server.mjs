@@ -1,3 +1,4 @@
+import {createDailyLimit,DailyLimitError} from '../shared/daily-limit.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {randomBytes,createHash} from 'node:crypto';
@@ -10,6 +11,7 @@ import QRCode from 'qrcode';
 
 const root=fileURLToPath(new URL('.',import.meta.url));
 try{process.loadEnvFile(root+'.env.local');}catch(error){if(error.code!=='ENOENT')throw error;}
+const dailyLimit=createDailyLimit({file:root+'.runtime/daily-usage.json',limit:Number(process.env.DAILY_SEARCH_LIMIT||100)});
 const keys=await credentials(),services=await createServices(root,keys);
 const sessions=new Map(),rates=new Map();let active=0;
 const headers={'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self' https://www.google.com/travel/clk/f",'Permissions-Policy':'camera=(), microphone=(), geolocation=()'};
@@ -42,6 +44,7 @@ const server=http.createServer(async(req,res)=>{
       if(active>=3)throw new AppError('Es laufen gerade mehrere Suchen. Bitte gleich erneut versuchen.',429);
       active++;
       try{
+        await dailyLimit();
         const interpretation=await resolveSearchInput(input,services.interpret);
         const result=await services.search(interpretation.query);
         const id=randomBytes(18).toString('hex');
@@ -60,7 +63,7 @@ const server=http.createServer(async(req,res)=>{
     }
     if(req.method==='GET'&&files[url.pathname]){const name=files[url.pathname];res.writeHead(200,{...headers,'Content-Type':mime[name.split('.').at(-1)]+'; charset=utf-8','Cache-Control':'no-cache'});return res.end(await readFile(root+'public/'+name));}
     json(res,{error:'Nicht gefunden.'},404);
-  }catch(e){if(!res.headersSent)json(res,{error:e instanceof AppError?e.message:'Die Suche konnte nicht abgeschlossen werden. Bitte erneut versuchen.',...(e instanceof AppError?e.details:{})},e instanceof AppError?e.status:502);else res.end();}
+  }catch(e){if(!res.headersSent)json(res,{error:(e instanceof AppError || e instanceof DailyLimitError)?e.message:'Die Suche konnte nicht abgeschlossen werden. Bitte erneut versuchen.',...((e instanceof AppError || e instanceof DailyLimitError)?e.details:{})},(e instanceof AppError || e instanceof DailyLimitError)?e.status:502);else res.end();}
 });
 server.requestTimeout=120000;server.headersTimeout=15000;
 setInterval(()=>{for(const [k,v] of sessions)if(v.expires<Date.now())sessions.delete(k);for(const [k,v] of rates)if(v.until<Date.now())rates.delete(k);},60000).unref();

@@ -100,6 +100,16 @@ Common issues:
 
 Supported scope includes one-way and return trips, economy, 1–6 travellers aged two or older, a bounded airport catalogue, nonstop filters, cabin baggage and time/budget constraints. Checked baggage costs can be unknown. Return searches complete the three cheapest matching outward candidates, not every possible combination. Results are not a promise of the cheapest available ticket.
 
+## Daily search limit
+
+`DAILY_SEARCH_LIMIT=100` allows at most 100 submitted search attempts per app per Zurich calendar day, shared across all visitors. You may lower it to an integer from 1 to 100. Once exhausted, the server returns HTTP 429 before calling the search/model provider. Failed admitted attempts count; restarting the app does not reset usage.
+
+The counter resets when the next request arrives after midnight in `Europe/Zurich`, including daylight-saving changes. It is stored in `.runtime/daily-usage.json`. Preserve the entire `.runtime` directory when deploying or restarting. This file-based limiter supports one server process per app; replicas require shared transactional storage.
+
+Both apps import `../shared/daily-limit.mjs`. Clone the whole repository and retain the sibling `shared/` folder when packaging an app.
+
+Existing provider quotas, per-IP limits and cumulative API-call caps still apply and can stop requests earlier. The daily search limit is not a provider billing limit. A WhichFlight return search can use multiple flight API requests; booking lookups are separate.
+
 ## Tests
 
 ```bash

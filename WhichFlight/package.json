@@ -12,7 +12,7 @@
     "event": "node scripts/event.mjs",
     "event:qr": "node scripts/event-qr.mjs",
     "event:check": "node scripts/event-check.mjs",
-    "test": "node --test test/*.test.mjs",
+    "test": "node --test test/*.test.mjs ../shared/test/*.test.mjs",
     "test:browser": "node scripts/check-browser.mjs"
   },
   "dependencies": {

@@ -1,3 +1,4 @@
+import {createDailyLimit,DailyLimitError} from '../shared/daily-limit.mjs';
 import http from 'node:http';
 import {readFile, mkdir, writeFile, rename} from 'node:fs/promises';
 import {randomBytes, createHash} from 'node:crypto';
@@ -8,6 +9,7 @@ import {readSbbFares} from './src/fare-browser.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 try { process.loadEnvFile(root + '.env.local'); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+const dailyLimit=createDailyLimit({file:root+'.runtime/daily-usage.json',limit:Number(process.env.DAILY_SEARCH_LIMIT||100)});
 const key = process.env.TYPESAFE_API_KEY || '';
 const sessions = new Map(), searches = new Map(), rate = new Map();
 const fareService=createFareService(readSbbFares);
@@ -64,6 +66,7 @@ const server = http.createServer(async (req,res) => {
     }
     if (req.method === 'POST' && url.pathname === '/api/journeys') {
       sameOrigin(req); rateLimit(req,'search',12); const input = await body(req), query = validateSearch(input);
+      await dailyLimit();
       const cacheKey = JSON.stringify(query); let result = searches.get(cacheKey);
       if (!result || result.expires < Date.now()) {
         const data = await fetchJSON('https://transport.opendata.ch/v1/connections?' + new URLSearchParams(query));
@@ -92,6 +95,7 @@ const server = http.createServer(async (req,res) => {
       if (session.results.has(preferences)) return json(res,{...session.results.get(preferences),cached:true});
       if (session.pending.has(preferences)) return json(res,await session.pending.get(preferences));
       const operation = (async () => {
+        await dailyLimit('rankings');
         await reserveCall(); const start = performance.now();
         const request = buildQuestions(session.journeys, preferences);
         const data = await fetchJSON('https://api.typesafe.ai/v1/systemone', {method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+key},body:JSON.stringify({model:'jev-1.13.0',...request})});
@@ -108,7 +112,7 @@ const server = http.createServer(async (req,res) => {
     }
     json(res,{error:'Nicht gefunden.'},404);
   } catch (e) {
-    if (!res.headersSent) json(res,{error:e instanceof AppError ? e.message : 'Der Dienst ist gerade nicht erreichbar. Bitte erneut versuchen.'},e instanceof AppError ? e.status : 502);
+    if (!res.headersSent) json(res,{error:(e instanceof AppError || e instanceof DailyLimitError) ? e.message : 'Der Dienst ist gerade nicht erreichbar. Bitte erneut versuchen.'},(e instanceof AppError || e instanceof DailyLimitError) ? e.status : 502);
     else res.end();
   }
 });

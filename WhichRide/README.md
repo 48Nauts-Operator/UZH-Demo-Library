@@ -105,6 +105,18 @@ Troubleshooting:
 - **Too many requests:** wait a minute. The app and the shared timetable service both apply limits.
 - **Changed key ignored:** check for an exported `TYPESAFE_API_KEY` overriding `.env.local`.
 
+## Daily search limit
+
+`DAILY_SEARCH_LIMIT=100` allows at most 100 submitted search attempts per app per Zurich calendar day, shared across all visitors. You may lower it to an integer from 1 to 100. Once exhausted, the server returns HTTP 429 before calling the search/model provider. Failed admitted attempts count; restarting the app does not reset usage.
+
+The counter resets when the next request arrives after midnight in `Europe/Zurich`, including daylight-saving changes. It is stored in `.runtime/daily-usage.json`. Preserve the entire `.runtime` directory when deploying or restarting. This file-based limiter supports one server process per app; replicas require shared transactional storage.
+
+Both apps import `../shared/daily-limit.mjs`. Clone the whole repository and retain the sibling `shared/` folder when packaging an app.
+
+Existing provider quotas, per-IP limits and cumulative API-call caps still apply and can stop requests earlier. The daily search limit is not a provider billing limit. A WhichFlight return search can use multiple flight API requests; booking lookups are separate.
+
+WhichRide also allows at most 100 new Jev rankings per Zurich day, using a separate counter. Cached ranking results do not spend another ranking allowance.
+
 ## Tests
 
 ```bash

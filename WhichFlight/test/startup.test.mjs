@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp, cp, writeFile, rm} from 'node:fs/promises';
+import {mkdtemp, mkdir, cp, writeFile, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {spawn} from 'node:child_process';
@@ -8,7 +8,10 @@ import {fileURLToPath} from 'node:url';
 
 test('fresh checkout loads local keys and starts with an empty runtime', async()=>{
   const root=fileURLToPath(new URL('../',import.meta.url));
-  const temp=await mkdtemp(join(tmpdir(),'whichflight-startup-'));
+  const workspace=await mkdtemp(join(tmpdir(),'whichflight-startup-'));
+  const temp=join(workspace,'app');
+  await mkdir(temp);
+  await cp(join(root,'../shared'),join(workspace,'shared'),{recursive:true});
   let child;
   try{
     for(const file of ['server.mjs','src','public','node_modules'])await cp(join(root,file),join(temp,file),{recursive:true});
@@ -24,8 +27,14 @@ test('fresh checkout loads local keys and starts with an empty runtime', async()
     assert.equal((await fetch(base+'/.env.local')).status,404);
     const bad=await fetch(base+'/api/search',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});
     assert.equal(bad.status,400);
+    const day=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Zurich',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    await writeFile(join(temp,'.runtime/daily-usage.json'),JSON.stringify({day,counts:{searches:100,rankings:100}}));
+    const blocked=await fetch(base+'/api/search',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:'Zurich to London tomorrow'})});
+    assert.equal(blocked.status,429);
+    assert.match((await blocked.json()).error,/Tageskontingent/);
+
   }finally{
     if(child&&child.exitCode===null){const exited=new Promise(r=>child.once('exit',r));child.kill();await exited;}
-    await rm(temp,{recursive:true,force:true});
+    await rm(workspace,{recursive:true,force:true});
   }
 });
